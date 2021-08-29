@@ -61,7 +61,7 @@ paths:
     get:
       tags:
         - User
-      summary: Get the user by id.
+      summary: Get user by id.
       description: Request shape - http://localhost:5001/user/*userId*
       operationId: getUser
       parameters:
@@ -91,7 +91,7 @@ paths:
     delete:
       tags:
         - User
-      summary: Get the user by id.
+      summary: Delete user by id.
       description: Request shape - http://localhost:5001/user/*userId*
       operationId: deleteUser
       parameters:

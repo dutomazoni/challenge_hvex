@@ -1,0 +1,166 @@
+openapi: '3.0.1'
+info:
+  title: Routes
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: dutomazoni@gmail.com
+  version: '1.0'
+servers:
+  - url: http://localhost:5001
+tags:
+  - name: User
+    description: Users' routes.
+
+paths:
+  /user:
+    post:
+      tags:
+        - User
+      summary: Create user.
+      description: Request shape - http://localhost:5001/user
+      operationId: createUser
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    username:
+                      type: string
+                    password:
+                      type: string
+                    last_login:
+                      type: string
+              example:
+                user:
+                  name: "Esma Küçükler"
+                  username: "cooler_username"
+                  password: "gemini"
+                  last_login: "2009-04-10T01:07:02.448Z"
+
+        required: true
+      responses:
+        200:
+          description: Returns the status of the operation.
+          content:
+            application/json:
+              examples:
+                createUser:
+                  value:
+                    {
+                      "message": "User created successfully!",
+                      "status": 201
+                    }
+
+  /user/{userId}:
+    get:
+      tags:
+        - User
+      summary: Get the user by id.
+      description: Request shape - http://localhost:5001/user/*userId*
+      operationId: getUser
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+            example: "612b8bd7d592531710e97d04"
+      responses:
+        200:
+          description: Returns the user.
+          content:
+            application/json:
+              examples:
+                getUser:
+                  value:
+                    {
+                      "user": {
+                        "_id": "612b8bd7d592531710e97d04",
+                        "name": "Esma Küçükler",
+                        "username": "cool_username",
+                        "password": "gemini",
+                        "last_login": "2009-04-10T01:07:02.448Z"
+                      }
+                    }
+    delete:
+      tags:
+        - User
+      summary: Get the user by id.
+      description: Request shape - http://localhost:5001/user/*userId*
+      operationId: deleteUser
+      parameters:
+        - in: path
+          required: true
+          name: userId
+          schema:
+            type: string
+            example: "612b8bd7d592531710e97d11"
+      responses:
+        200:
+          description: Returns the status of the operation.
+          content:
+            application/json:
+              examples:
+                deleteUser:
+                  value:
+                    {
+                      "message": "User deleted successfully!",
+                      "status": 200
+                    }
+    put:
+      tags:
+        - User
+      summary: Edit user's information.
+      description: Request shape - http://localhost:5001/users/*userId*
+      operationId: putUser
+      parameters:
+        - in: path
+          required: true
+          name: putUser
+          schema:
+            type: string
+            example: "612b8bd7d592531710e97d04"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                password:
+                  type: string
+                last_login:
+                  type: string
+              example:
+                name: "Esma Küçükler"
+                username: "cool_username"
+                password: "gemini"
+                last_login: "2009-04-10T01:07:02.448Z"
+        required: true
+      responses:
+        200:
+          description: Returns the edited user.
+          content:
+            application/json:
+              examples:
+                putUser:
+                  value:
+                    {
+                      "user": {
+                        "_id": "612b8bd7d592531710e97d04",
+                        "name": "Esma Küçükler",
+                        "username": "cool_username",
+                        "password": "gemini",
+                        "last_login": "2009-04-10T01:07:02.448Z"
+                      }
+                    }
+

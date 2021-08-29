@@ -1,6 +1,6 @@
 # Desafio Backend Hvex
 
-O projeto está disponível no [Heroku](https://hvex-backend.herokuapp.com/).
+A API está disponível no [Heroku](https://hvex-backend.herokuapp.com/).
 
 ## Instalação
 
